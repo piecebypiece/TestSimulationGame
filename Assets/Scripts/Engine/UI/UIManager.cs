@@ -5,9 +5,9 @@ using UnityEngine;
 
 
 /// <summary>
-/// ¸ðµç UI¸¦ °ü¸®ÇÑ´Ù.
+/// ëª¨ë“  UIë¥¼ ê´€ë¦¬í•œë‹¤.
 /// </summary>
-public class UIManager : MonoSingleton
+public class UIManager : MonoSingleton<UIManager>
 {
     
 }

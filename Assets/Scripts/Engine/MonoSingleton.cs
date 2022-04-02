@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ¸ğ³ë ±â¹İ ½Ì±ÛÅæ Å¬·¡½ºÀÌ´Ù.
-/// »ç¿ëÀÚ°¡ ¹Ì¸® ½ÃÀÛ¾À¿¡ ¹èÄ¡ÇØ ³õ¾Æ¾ßÇÑ´Ù.
+/// ëª¨ë…¸ ê¸°ë°˜ ì‹±ê¸€í†¤ í´ë˜ìŠ¤ì´ë‹¤.
+/// ì‚¬ìš©ìê°€ ë¯¸ë¦¬ ì‹œì‘ì”¬ì— ë°°ì¹˜í•´ ë†“ì•„ì•¼í•œë‹¤.
 /// </summary>
-public class MonoSingleton : MonoBehaviour
+public class MonoSingleton<T> : MonoBehaviour where T : class
 {
-    public static MonoSingleton Instance = null;
+    public static T Instance = null;
 
     void Awake()
     {
@@ -16,7 +16,7 @@ public class MonoSingleton : MonoBehaviour
 		{
             throw new System.Exception("Singleton is aready exisit");
 		}
-        Instance = this;
+        Instance = this as T;
         DontDestroyOnLoad(this);
     }
 }
