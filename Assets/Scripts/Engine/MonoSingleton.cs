@@ -12,7 +12,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : class
 
     void Awake()
     {
-        if(Instance == null)
+        if(Instance != null)
 		{
             throw new System.Exception("Singleton is aready exisit");
 		}
