@@ -1,3 +1,16 @@
 SubScene 알아보고 사용하기
 SubScene이라는 클래스가 있고
 저장시 바이너리로 저장되어서 로드언로드가 굉장히 빠르다.
+
+
+Job 에는 JobHandle을 통해서 종속성을 걸 수 있다.
+이러한 종속성 예약은 Job을 Schedule 한 제어 스레드(메인 스레드)와 동일한 스레드여야 합니다.
+JobHandle firstJobHandle = firstJob.Schedule();
+secondJob.Schedule(firstJobHandle);
+
+종속성 병합 시키는 방법 많은 종속성들이 있을때는 CombineDependencies 함수를 통해서 종속성을 주입해줄 수 있다.
+// NativeArray 에 있는 핸들들의 종속성들을 합친다
+NativeArray<JobHandle> handles = new NativeArray<JobHandle>(numJobs, Allocator.TempJob);
+// Populate `handles` with `JobHandles` from multiple scheduled jobs...
+JobHandle jh = JobHandle.CombineDependencies(handles);
+
