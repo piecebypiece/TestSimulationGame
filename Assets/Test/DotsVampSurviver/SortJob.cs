@@ -19,7 +19,7 @@ public struct JobA : IJob
     public void Execute()
     {
         result[0] = 'a';
-        result[1] = System.Convert.ToChar(i);
+        result[1] = i.ToString().ToCharArray()[0];
     }
 }
 
